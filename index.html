@@ -267,7 +267,7 @@
       min-width: 0;
     }
 
-    /* Red Rectangle housing the popup's title */
+    /* Red Rectangle housing the popup topic badge */
     .modal-red-rectangle {
       width: fit-content;
       max-width: 100%;
@@ -278,7 +278,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .modal-rectangle-text {
@@ -289,6 +289,17 @@
       text-transform: uppercase;
       user-select: none;
       line-height: 1.3;
+    }
+
+    /* 📍 NEW: Title directly UNDER the red rectangle */
+    .modal-subtitle {
+      font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+      font-weight: 900;
+      color: #0f1c3f;
+      text-transform: uppercase;
+      line-height: 1.25;
+      letter-spacing: -0.3px;
+      margin-bottom: 12px;
     }
 
     /* Overview text */
@@ -538,7 +549,7 @@
   </nav>
 
   <!-- ================================================= -->
-  <!-- 📍 MODAL / POPUP WITH RED TITLE RECTANGLE         -->
+  <!-- 📍 MODAL / POPUP WITH TITLE UNDER THE RECTANGLE   -->
   <!-- ================================================= -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-card">
@@ -552,15 +563,18 @@
         <!-- LEFT COLUMN -->
         <div class="modal-left-column">
           <div>
-            <!-- The Red Rectangle holds the popup's title -->
+            <!-- 1. The Red Rectangle -->
             <div class="modal-red-rectangle">
               <span class="modal-rectangle-text" id="modalTitle">TÍTULO</span>
             </div>
 
-            <!-- Overview text -->
+            <!-- 📍 2. TITLE UNDER THE RECTANGLE -->
+            <h2 class="modal-subtitle" id="modalSubtitle">Subtítulo</h2>
+
+            <!-- 3. Overview text -->
             <p class="modal-overview-text" id="modalOverview"></p>
 
-            <!-- 📍 THREE SOFTLY ROUNDED BLOCKS (#bed7de) -->
+            <!-- 4. Three softly rounded blocks (#bed7de) -->
             <div class="angled-blocks-grid" id="modalBlocksContainer">
               <!-- Injected dynamically via JavaScript -->
             </div>
@@ -586,9 +600,15 @@
 
   <!-- JAVASCRIPT: POPUP CONTENT & ACTIONS -->
   <script>
+    // 📍 Each topic contains:
+    // - title: Text inside the red rectangle
+    // - subtitle: The prominent title UNDER the red rectangle
+    // - overview: The introductory paragraph
+    // - blocks: The 3 softly rounded blocks (#bed7de)
     const popupContent = {
       "mision-informativa": {
         title: "MISIÓN INFORMATIVA",
+        subtitle: "PROPÓSITO INSTITUCIONAL Y VALORES JUVENILES",
         overview: "Fomentar el desarrollo físico, cívico y espiritual de la juventud mediante una celebración deportiva nacional basada en los valores salesianos.",
         blocks: [
           { title: "VALORES", desc: "Formación de valores éticos, compañerismo y respeto bajo el carisma de Don Bosco." },
@@ -598,6 +618,7 @@
       },
       "a-quien-llega": {
         title: "A QUIÉN LLEGA SU MARCA",
+        subtitle: "AUDIENCIA, VISIBILIDAD E IMPACTO DIRECTO",
         overview: "Conecte directamente con una audiencia amplia, familiar y altamente comprometida a nivel presencial y digital.",
         blocks: [
           { title: "ATLETAS", desc: "Más de 5,000 atletas juveniles en competencia activa durante las jornadas." },
@@ -607,6 +628,7 @@
       },
       "trayectoria": {
         title: "TRAYECTORIA",
+        subtitle: "HISTORIA, TRADICIÓN Y PRESTIGIO DEPORTIVO",
         overview: "Un evento con raíces históricas sólidas y un historial impecable de excelencia organizativa deportiva.",
         blocks: [
           { title: "16 EDICIONES", desc: "Tradición ininterrumpida que avala el prestigio del certamen deportivo salesiano." },
@@ -616,6 +638,7 @@
       },
       "competicion-oficial": {
         title: "COMPETICIÓN OFICIAL",
+        subtitle: "DISCIPLINAS Y EXCELENCIA TÉCNICA REGLAMENTARIA",
         overview: "Disciplinas avaladas técnicamente que reúnen lo mejor del talento escolar y juvenil en ramas masculina y femenina.",
         blocks: [
           { title: "DISCIPLINAS", desc: "Fútbol sala, Baloncesto, Voleibol, Atletismo, Ajedrez y Tenis de mesa." },
@@ -625,6 +648,7 @@
       },
       "presupuesto": {
         title: "PRESUPUESTO",
+        subtitle: "DISTRIBUCIÓN RIGUROSA Y TRANSPARENCIA OPERATIVA",
         overview: "Planificación presupuestaria rigurosa, eficiente y transparente enfocada en la mejor experiencia para el atleta.",
         blocks: [
           { title: "LOGÍSTICA", desc: "Hospedaje de calidad, alimentación balanceada y transporte para delegaciones." },
@@ -634,6 +658,7 @@
       },
       "niveles-participacion": {
         title: "NIVELES DE PARTICIPACIÓN",
+        subtitle: "ESQUEMAS ESTRATÉGICOS DE PATROCINIO",
         overview: "Esquemas de patrocinio estratégicos diseñados para maximizar la visibilidad y el retorno de inversión social.",
         blocks: [
           { title: "PLATINO", desc: "Máxima presencia con exclusividad de sector, presencia central y activaciones clave." },
@@ -643,6 +668,7 @@
       },
       "que-recibe-su-marca": {
         title: "QUÉ RECIBE SU MARCA EN CADA NIVEL",
+        subtitle: "BENEFICIOS DE MARCA E INVERSIÓN SOCIAL",
         overview: "Beneficios medibles y tangibles de posicionamiento institucional, comercial y de responsabilidad social corporativa.",
         blocks: [
           { title: "VISIBILIDAD", desc: "Logo en uniformes oficiales, backing de prensa y señalética en recintos deportivos." },
@@ -652,6 +678,7 @@
       },
       "otras-formas": {
         title: "OTRAS FORMAS DE APORTAR",
+        subtitle: "MODALIDADES EN ESPECIE Y ALIANZAS LOGÍSTICAS",
         overview: "Modalidades flexibles de contribución en especie o servicios logísticos que complementan la ejecución del evento.",
         blocks: [
           { title: "EN ESPECIE", desc: "Aportes en bebidas hidratantes, barras energéticas y suministros médicos." },
@@ -661,6 +688,7 @@
       },
       "garantia": {
         title: "GARANTÍA",
+        subtitle: "AUDITORÍA, INFORME ROI Y RENDICIÓN DE CUENTAS",
         overview: "Compromiso absoluto de rendición de cuentas, auditoría y entrega de evidencia del impacto alcanzado.",
         blocks: [
           { title: "AUDITORÍA", desc: "Balances financieros claros y certificados emitidos al concluir el evento." },
@@ -670,6 +698,7 @@
       },
       "fechas-marca": {
         title: "FECHAS PARA SU MARCA",
+        subtitle: "CALENDARIO CLAVE DE ACTIVACIÓN Y LANZAMIENTO",
         overview: "Línea de tiempo estratégica para asegurar la integración adecuada de su marca antes y durante la justa deportiva.",
         blocks: [
           { title: "CONVENIOS", desc: "Cierre de acuerdos y recepción de artes de marca con debida antelación." },
@@ -679,6 +708,7 @@
       },
       "contactos": {
         title: "CONTACTOS",
+        subtitle: "CANALES DE ENLACE DIRECTO CON LA COMISIÓN",
         overview: "Canales directos de atención y enlace con la Comisión de Patrocinios e Inversión Social.",
         blocks: [
           { title: "CORREO", desc: "patrocinios@juegossalesianos2027.org para solicitudes y propuestas formales." },
@@ -688,6 +718,7 @@
       },
       "comite-organizador": {
         title: "COMITÉ ORGANIZADOR",
+        subtitle: "ESTRUCTURA DE LIDERAZGO INSTITUCIONAL",
         overview: "Liderazgo pastoral, técnico y logístico con amplia experiencia en la realización de magnos eventos juveniles.",
         blocks: [
           { title: "PASTORAL SDB", desc: "Liderazgo espiritual y metodológico de la Inspectoría Salesiana." },
@@ -700,18 +731,21 @@
     // DOM Elements
     const overlay = document.getElementById('modalOverlay');
     const modalTitle = document.getElementById('modalTitle');
+    const modalSubtitle = document.getElementById('modalSubtitle');
     const modalOverview = document.getElementById('modalOverview');
     const modalBlocksContainer = document.getElementById('modalBlocksContainer');
     const closeBtn = document.getElementById('modalCloseBtn');
     const buttons = document.querySelectorAll('.nav-card');
 
-    // Open Modal
+    // Open Modal Function
     function openModal(topicKey) {
       const data = popupContent[topicKey];
       if (data) {
         modalTitle.textContent = data.title;
+        modalSubtitle.textContent = data.subtitle; // 📍 Sets the title under the rectangle
         modalOverview.textContent = data.overview;
 
+        // Render the 3 blocks (#bed7de)
         modalBlocksContainer.innerHTML = data.blocks.map(block => `
           <div class="angled-block">
             <h4 class="block-title">${block.title}</h4>
@@ -724,13 +758,13 @@
       }
     }
 
-    // Close Modal
+    // Close Modal Function
     function closeModal() {
       overlay.classList.remove('active');
       document.body.style.overflow = '';
     }
 
-    // Event Listeners for buttons
+    // Button Click Listeners
     buttons.forEach(button => {
       button.addEventListener('click', () => {
         const topic = button.getAttribute('data-topic');
@@ -738,15 +772,17 @@
       });
     });
 
-    // Close Actions
+    // Close Button Click
     closeBtn.addEventListener('click', closeModal);
 
+    // Backdrop Click
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) {
         closeModal();
       }
     });
 
+    // Escape Key Listener
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && overlay.classList.contains('active')) {
         closeModal();
