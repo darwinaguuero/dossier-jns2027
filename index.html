@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dossier Oficial - XVII Juegos Nacionales Salesianos 2027</title>
+
+  <!-- Geometric Sans-Serif Font: Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Page container with pure white background */
+    body {
+      background-color: #ffffff;
+      min-height: 100vh;
+      padding: 48px;
+      font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+    }
+
+    /* Top Section: Left content + Right logo */
+    .hero-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+
+    /* Left-side content */
+    .left-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 28px;
+      max-width: 720px;
+    }
+
+    /* Badge and subtitle row */
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Main page red rectangle */
+    .red-rectangle {
+      width: 195px;
+      height: 44px;
+      background-color: #d90429;
+      border-radius: 20px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rectangle-text {
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    .subtitle-right {
+      color: #0f1c3f;
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* Bold two-line heading */
+    .event-title {
+      color: #0f1c3f;
+      font-size: clamp(2rem, 3.8vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+    }
+
+    .event-title span {
+      display: block;
+    }
+
+    /* Right-side logo container */
+    .logo-container {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .event-logo {
+      width: 480px;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* SMALLER CENTERED UNCROPPED IMAGES */
+    .gallery-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 45px auto 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .gallery-image {
+      height: 140px;
+      width: auto;
+      max-width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+
+    /* 12 MODERN NAVIGATION BUTTONS */
+    .nav-section {
+      max-width: 1200px;
+      margin: 55px auto 40px auto;
+    }
+
+    .buttons-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .nav-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      min-height: 72px;
+      background-color: #ffffff;
+      border: 1.5px solid #0f1c3f;
+      border-radius: 12px;
+      color: #0f1c3f;
+      font-size: 0.78rem;
+      font-family: inherit;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      text-align: left;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .nav-card:hover {
+      background-color: #0f1c3f;
+      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(15, 28, 63, 0.15);
+    }
+
+    .nav-card .arrow {
+      font-size: 1rem;
+      margin-left: 10px;
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .nav-card:hover .arrow {
+      transform: translateX(4px);
+    }
+
+    /* ================================================= */
+    /* POPUP / MODAL STYLES                              */
+    /* ================================================= */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(15, 28, 63, 0.65);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+      z-index: 1000;
+      padding: 24px;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 960px;
+      border-radius: 20px;
+      padding: 36px 40px;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(15, 28, 63, 0.35);
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    /* Close Button */
+    .modal-close {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      background: #f1f5f9;
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      color: #0f1c3f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      background: #d90429;
+      color: #ffffff;
+    }
+
+    /* Two-column layout inside popup */
+    .modal-content-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .modal-left-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+    }
+
+    /* Red Rectangle housing the popup's title */
+    .modal-red-rectangle {
+      width: fit-content;
+      max-width: 100%;
+      padding: 8px 22px;
+      min-height: 40px;
+      background-color: #d90429;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .modal-rectangle-text {
+      color: #ffffff;
+      font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      user-select: none;
+      line-height: 1.3;
+    }
+
+    /* Overview text */
+    .modal-overview-text {
+      color: #334155;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      margin-bottom: 22px;
+    }
+
+    /* 3 Blocks: softly rounded corners (#bed7de) */
+    .angled-blocks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .angled-block {
+      background-color: #bed7de;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      border-radius: 12px;
+    }
+
+    /* Block Title: Centered */
+    .block-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #0f1c3f;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    /* Block Description: Right-Aligned */
+    .block-description {
+      font-size: 0.82rem;
+      color: #1e293b;
+      line-height: 1.45;
+      text-align: right;
+      font-weight: 500;
+    }
+
+    /* Down-Left: 3 small logos */
+    .modal-bottom-logos {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 18px;
+      border-top: 1px solid #e2e8f0;
+      width: fit-content;
+    }
+
+    .modal-bottom-img {
+      height: 48px;
+      width: auto;
+      max-width: 100px;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Right Column: Event Logo */
+    .modal-right-column {
+      width: 250px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 10px;
+    }
+
+    .modal-right-logo {
+      width: 100%;
+      max-width: 240px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1100px) {
+      .buttons-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 850px) {
+      .buttons-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .modal-content-grid {
+        flex-direction: column-reverse;
+        gap: 24px;
+      }
+      .modal-right-column {
+        width: 100%;
+        justify-content: center;
+      }
+      .modal-right-logo {
+        max-width: 180px;
+      }
+      .angled-blocks-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 992px) {
+      body {
+        padding: 24px;
+      }
+      .hero-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .left-content {
+        align-items: center;
+        text-align: center;
+      }
+      .badge-row {
+        flex-direction: column;
+      }
+      .event-logo {
+        width: 280px;
+      }
+      .gallery-container {
+        margin-top: 35px;
+        gap: 14px;
+      }
+      .gallery-image {
+        height: 110px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .buttons-grid {
+        grid-template-columns: 1fr;
+      }
+      .modal-card {
+        padding: 24px 20px;
+      }
+      .modal-bottom-img {
+        height: 38px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP SECTION -->
+  <main class="hero-container">
+    <div class="left-content">
+      <div class="badge-row">
+        <div class="red-rectangle" id="dossierBadge">
+          <span class="rectangle-text">DOSSIER OFICIAL</span>
+        </div>
+        <span class="subtitle-right">PATROCINIO E INVERSIÓN SOCIAL</span>
+      </div>
+
+      <h1 class="event-title">
+        <span>XVII JUEGOS NACIONALES</span>
+        <span>SALESIANOS 2027</span>
+      </h1>
+    </div>
+
+    <!-- 📍 LOGO -->
+    <div class="logo-container">
+      <img src="C:/Users/darwi/Documents/Projects/JNS/images/logo-juegos.jpg" alt="Logo Juegos Salesianos 2027" class="event-logo" />
+    </div>
+  </main>
+
+  <!-- 📍 THREE UNCROPPED IMAGES -->
+  <section class="gallery-container">
+    <img src="C:/Users/darwi/Documents/Projects/JNS/images/pastoral-logo.png" alt="Pastoral Juvenil" class="gallery-image" />
+    <img src="C:/Users/darwi/Documents/Projects/JNS/images/pastoralfma-logo.png" alt="Pastoral FMA" class="gallery-image" />
+    <img src="C:/Users/darwi/Documents/Projects/JNS/images/donboscof-logo.png" alt="Don Bosco F" class="gallery-image" />
+  </section>
+
+  <!-- 📍 12 INTERACTIVE POPUP BUTTONS -->
+  <nav class="nav-section">
+    <div class="buttons-grid">
+
+      <button class="nav-card" data-topic="mision-informativa">
+        <span>MISIÓN INFORMATIVA</span>
+        <span class="arrow">→</span>
+      </button>
+
+      <button class="nav-card" data-topic="a-quien-llega">
+        <span>A QUIÉN LLEGA SU MARCA</span>
+        <span class="arrow">→</span>
+      </button>
+
+      <button class="nav-card" data-topic="trayectoria">
+        <span>TRAYECTORIA</span>
+        <span class="arrow">→</span>
+      </button>
+
+      <button class="nav-card" data-topic="competicion-oficial">
+        <span>COMPETICIÓN OFICIAL</span>
+        <span class="arrow">→</span>
+      </button>
+
+      <button class="nav-card" data-topic="presupuesto">
+        <span>PRESUPUESTO</span>
+        <span class="arrow">→</span>
+      </button>
+
+      <button class="nav-card" data-topic="niveles-participacion">
+        <span>NIVELES DE PARTICIPACIÓN</span>
+        <span class="arrow">→</span>
+      </button>
+
+      <button class="nav-card" data-topic="que-recibe-su-marca">
+        <span>Qué recibe su marca en cada nivel</span>
+        <span class="arrow">→</span>
+      </button>
+
+      <button class="nav-card" data-topic="otras-formas">
+        <span>Otras formas de aportar</span>
+        <span class="arrow">→</span>
+      </button>
+
+      <button class="nav-card" data-topic="garantia">
+        <span>Garantía</span>
+        <span class="arrow">→</span>
+      </button>
+
+      <button class="nav-card" data-topic="fechas-marca">
+        <span>Fechas para su marca</span>
+        <span class="arrow">→</span>
+      </button>
+
+      <button class="nav-card" data-topic="contactos">
+        <span>Contactos</span>
+        <span class="arrow">→</span>
+      </button>
+
+      <button class="nav-card" data-topic="comite-organizador">
+        <span>COMITÉ ORGANIZADOR</span>
+        <span class="arrow">→</span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- ================================================= -->
+  <!-- 📍 MODAL / POPUP WITH RED TITLE RECTANGLE         -->
+  <!-- ================================================= -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-card">
+      
+      <!-- Close Button -->
+      <button class="modal-close" id="modalCloseBtn" aria-label="Cerrar">✕</button>
+
+      <!-- Modal Content Grid (Left column + Right logo) -->
+      <div class="modal-content-grid">
+        
+        <!-- LEFT COLUMN -->
+        <div class="modal-left-column">
+          <div>
+            <!-- The Red Rectangle holds the popup's title -->
+            <div class="modal-red-rectangle">
+              <span class="modal-rectangle-text" id="modalTitle">TÍTULO</span>
+            </div>
+
+            <!-- Overview text -->
+            <p class="modal-overview-text" id="modalOverview"></p>
+
+            <!-- 📍 THREE SOFTLY ROUNDED BLOCKS (#bed7de) -->
+            <div class="angled-blocks-grid" id="modalBlocksContainer">
+              <!-- Injected dynamically via JavaScript -->
+            </div>
+          </div>
+
+          <!-- DOWN-LEFT: 3 images uncropped -->
+          <div class="modal-bottom-logos">
+            <img src="C:/Users/darwi/Documents/Projects/JNS/images/pastoral-logo.png" alt="Pastoral Juvenil" class="modal-bottom-img" />
+            <img src="C:/Users/darwi/Documents/Projects/JNS/images/pastoralfma-logo.png" alt="Pastoral FMA" class="modal-bottom-img" />
+            <img src="C:/Users/darwi/Documents/Projects/JNS/images/donboscof-logo.png" alt="Don Bosco F" class="modal-bottom-img" />
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: logo-juegos.jpg -->
+        <div class="modal-right-column">
+          <img src="C:/Users/darwi/Documents/Projects/JNS/images/logo-juegos.jpg" alt="Logo Juegos Salesianos 2027" class="modal-right-logo" />
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT: POPUP CONTENT & ACTIONS -->
+  <script>
+    const popupContent = {
+      "mision-informativa": {
+        title: "MISIÓN INFORMATIVA",
+        overview: "Fomentar el desarrollo físico, cívico y espiritual de la juventud mediante una celebración deportiva nacional basada en los valores salesianos.",
+        blocks: [
+          { title: "VALORES", desc: "Formación de valores éticos, compañerismo y respeto bajo el carisma de Don Bosco." },
+          { title: "ALCANCE", desc: "Integración de delegaciones juveniles de todo el país en un ambiente sano y seguro." },
+          { title: "LEGADO", desc: "Impacto duradero en la comunidad y fortalecimiento del tejido social juvenil." }
+        ]
+      },
+      "a-quien-llega": {
+        title: "A QUIÉN LLEGA SU MARCA",
+        overview: "Conecte directamente con una audiencia amplia, familiar y altamente comprometida a nivel presencial y digital.",
+        blocks: [
+          { title: "ATLETAS", desc: "Más de 5,000 atletas juveniles en competencia activa durante las jornadas." },
+          { title: "FAMILIAS", desc: "Audiencia presencial estimada de más de 25,000 padres, educadores y simpatizantes." },
+          { title: "DIGITAL", desc: "Campañas multicanal con cobertura mediática en vivo en redes y streaming." }
+        ]
+      },
+      "trayectoria": {
+        title: "TRAYECTORIA",
+        overview: "Un evento con raíces históricas sólidas y un historial impecable de excelencia organizativa deportiva.",
+        blocks: [
+          { title: "16 EDICIONES", desc: "Tradición ininterrumpida que avala el prestigio del certamen deportivo salesiano." },
+          { title: "CRECIMIENTO", desc: "Evolución constante en infraestructura técnica, logística y estándares deportivos." },
+          { title: "RECONOCIMIENTO", desc: "Aval institucional de federaciones deportivas oficiales a nivel nacional." }
+        ]
+      },
+      "competicion-oficial": {
+        title: "COMPETICIÓN OFICIAL",
+        overview: "Disciplinas avaladas técnicamente que reúnen lo mejor del talento escolar y juvenil en ramas masculina y femenina.",
+        blocks: [
+          { title: "DISCIPLINAS", desc: "Fútbol sala, Baloncesto, Voleibol, Atletismo, Ajedrez y Tenis de mesa." },
+          { title: "ARBITRAJE", desc: "Jueces y colegios de arbitraje certificados por federaciones nacionales." },
+          { title: "PREMIACIÓN", desc: "Medallería olímpica oficial, trofeos de juego limpio y copas institucionales." }
+        ]
+      },
+      "presupuesto": {
+        title: "PRESUPUESTO",
+        overview: "Planificación presupuestaria rigurosa, eficiente y transparente enfocada en la mejor experiencia para el atleta.",
+        blocks: [
+          { title: "LOGÍSTICA", desc: "Hospedaje de calidad, alimentación balanceada y transporte para delegaciones." },
+          { title: "EQUIPAMIENTO", desc: "Instalaciones de primer nivel, balonería reglamentaria y uniformes técnicos." },
+          { title: "BIENESTAR", desc: "Cobertura médica permanente, ambulancias y protocolos de seguridad integral." }
+        ]
+      },
+      "niveles-participacion": {
+        title: "NIVELES DE PARTICIPACIÓN",
+        overview: "Esquemas de patrocinio estratégicos diseñados para maximizar la visibilidad y el retorno de inversión social.",
+        blocks: [
+          { title: "PLATINO", desc: "Máxima presencia con exclusividad de sector, presencia central y activaciones clave." },
+          { title: "ORO / PLATA", desc: "Alta exposición en uniformes, vallas perimetrales y transmisiones en vivo." },
+          { title: "BRONCE", desc: "Presencia en papelería oficial, menciones continuas y espacios en recintos." }
+        ]
+      },
+      "que-recibe-su-marca": {
+        title: "QUÉ RECIBE SU MARCA EN CADA NIVEL",
+        overview: "Beneficios medibles y tangibles de posicionamiento institucional, comercial y de responsabilidad social corporativa.",
+        blocks: [
+          { title: "VISIBILIDAD", desc: "Logo en uniformes oficiales, backing de prensa y señalética en recintos deportivos." },
+          { title: "ACTIVACIÓN", desc: "Espacios reservados para stands de interacción directa y muestreo de productos." },
+          { title: "PR & MEDIOS", desc: "Menciones en ruedas de prensa, entrevistas y piezas audiovisuales oficiales." }
+        ]
+      },
+      "otras-formas": {
+        title: "OTRAS FORMAS DE APORTAR",
+        overview: "Modalidades flexibles de contribución en especie o servicios logísticos que complementan la ejecución del evento.",
+        blocks: [
+          { title: "EN ESPECIE", desc: "Aportes en bebidas hidratantes, barras energéticas y suministros médicos." },
+          { title: "SERVICIOS", desc: "Apoyo en transporte interurbano, conectividad de internet o producción técnica." },
+          { title: "VOLUNTARIADO", desc: "Programas de voluntariado corporativo y capacitación para el personal." }
+        ]
+      },
+      "garantia": {
+        title: "GARANTÍA",
+        overview: "Compromiso absoluto de rendición de cuentas, auditoría y entrega de evidencia del impacto alcanzado.",
+        blocks: [
+          { title: "AUDITORÍA", desc: "Balances financieros claros y certificados emitidos al concluir el evento." },
+          { title: "INFORME ROI", desc: "Dossier final con métricas de impacto mediático, alcance y archivo fotográfico." },
+          { title: "CERTIFICACIÓN", desc: "Reconocimiento formal de Inversión Social y Responsabilidad Corporativa." }
+        ]
+      },
+      "fechas-marca": {
+        title: "FECHAS PARA SU MARCA",
+        overview: "Línea de tiempo estratégica para asegurar la integración adecuada de su marca antes y durante la justa deportiva.",
+        blocks: [
+          { title: "CONVENIOS", desc: "Cierre de acuerdos y recepción de artes de marca con debida antelación." },
+          { title: "LANZAMIENTO", desc: "Conferencia de prensa nacional y presentación oficial de los patrocinadores." },
+          { title: "COMPETICIÓN", desc: "Semana central de los Juegos 2027 con cobertura y transmisiones continuas." }
+        ]
+      },
+      "contactos": {
+        title: "CONTACTOS",
+        overview: "Canales directos de atención y enlace con la Comisión de Patrocinios e Inversión Social.",
+        blocks: [
+          { title: "CORREO", desc: "patrocinios@juegossalesianos2027.org para solicitudes y propuestas formales." },
+          { title: "TELÉFONO", desc: "+1 (809) 000-0000 con atención directa de la comisión organizadora." },
+          { title: "SEDE", desc: "Oficinas del Comité Organizador en la Pastoral Juvenil Salesiana." }
+        ]
+      },
+      "comite-organizador": {
+        title: "COMITÉ ORGANIZADOR",
+        overview: "Liderazgo pastoral, técnico y logístico con amplia experiencia en la realización de magnos eventos juveniles.",
+        blocks: [
+          { title: "PASTORAL SDB", desc: "Liderazgo espiritual y metodológico de la Inspectoría Salesiana." },
+          { title: "FMA", desc: "Coordinación de las Hijas de María Auxiliadora en la animación de las delegaciones." },
+          { title: "DON BOSCO F.", desc: "Gestión administrativa, logística y salvaguarda de recursos institucionales." }
+        ]
+      }
+    };
+
+    // DOM Elements
+    const overlay = document.getElementById('modalOverlay');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalOverview = document.getElementById('modalOverview');
+    const modalBlocksContainer = document.getElementById('modalBlocksContainer');
+    const closeBtn = document.getElementById('modalCloseBtn');
+    const buttons = document.querySelectorAll('.nav-card');
+
+    // Open Modal
+    function openModal(topicKey) {
+      const data = popupContent[topicKey];
+      if (data) {
+        modalTitle.textContent = data.title;
+        modalOverview.textContent = data.overview;
+
+        modalBlocksContainer.innerHTML = data.blocks.map(block => `
+          <div class="angled-block">
+            <h4 class="block-title">${block.title}</h4>
+            <p class="block-description">${block.desc}</p>
+          </div>
+        `).join('');
+
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    // Close Modal
+    function closeModal() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Event Listeners for buttons
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const topic = button.getAttribute('data-topic');
+        openModal(topic);
+      });
+    });
+
+    // Close Actions
+    closeBtn.addEventListener('click', closeModal);
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  </script>
+
+</body>
+</html>
