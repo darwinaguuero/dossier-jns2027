@@ -382,24 +382,27 @@
     }
 
     /* Sports Grid (Competición Oficial) */
+    /* 📍 Makes the container wrap them naturally instead of stretching */
     .sports-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin: 20px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;               /* Space between each badge */
+      margin: 18px 0;
     }
 
+    /* 📍 Reduces the rectangle directly to the size of the letters */
     .sport-rect {
+      width: fit-content;       /* Hugs the letters */
       background-color: #f3ae7a;
       color: #2e3749;
-      padding: 14px 10px;
-      border-radius: 12px;
+      padding: 7px 16px;        /* Compact padding around the text */
+      border-radius: 8px;       /* Soft corners */
       text-align: center;
       font-weight: 800;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      box-shadow: 0 4px 10px rgba(243, 174, 122, 0.25);
+      box-shadow: 0 3px 8px rgba(243, 174, 122, 0.25);
     }
 
     /* Budget Infographic */
