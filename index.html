@@ -875,7 +875,7 @@
       // 5. PRESUPUESTO
       "presupuesto": {
         title: "PRESUPUESTO",
-        subtitle: "DISTRIBUCIÓN Y TRANSPARENCIA FINANCIERA",
+        subtitle: "",
         render: () => `
           <div class="budget-infographic">
             <div class="budget-left-pane">
@@ -1078,7 +1078,16 @@
       const data = popupContent[topicKey];
       if (data) {
         modalTitle.textContent = data.title;
-        modalSubtitle.textContent = data.subtitle;
+        
+        // 📍 If there is a subtitle, display it; otherwise, hide it completely
+        if (data.subtitle && data.subtitle.trim() !== "") {
+          modalSubtitle.textContent = data.subtitle;
+          modalSubtitle.style.display = "block";
+        } else {
+          modalSubtitle.textContent = "";
+          modalSubtitle.style.display = "none";
+        }
+
         modalBodyContainer.innerHTML = data.render();
 
         overlay.classList.add('active');
