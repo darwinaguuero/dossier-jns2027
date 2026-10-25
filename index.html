@@ -304,7 +304,9 @@
       margin-bottom: 14px;
     }
 
-    /* Misión Informativa Angled Blocks */
+    /* ================================================= */
+    /* 📍 MISIÓN INFORMATIVA: ROUNDED BLOCKS             */
+    /* ================================================= */
     .mision-blocks-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -312,13 +314,22 @@
       margin-top: 18px;
     }
 
-    ..mision-angled-block {
+    .mision-angled-block {
       background-color: #bed7de;
       padding: 18px 16px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      border-radius: 16px; /* 📍 Smooth rounded corners (no angle cuts) */
+      border-radius: 16px; /* Smooth rounded corners */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .mision-block-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #2e3749;
+      text-align: center;
+      margin-bottom: 8px;
     }
 
     .mision-block-desc {
@@ -652,7 +663,7 @@
     </div>
   </main>
 
-  <!-- 📍 THREE UNCROPPED IMAGES (UPDATED ADDRESSES) -->
+  <!-- 📍 THREE UNCROPPED IMAGES -->
   <section class="gallery-container">
     <img src="pastoral-logo.png" alt="Pastoral Juvenil" class="gallery-image" />
     <img src="pastoralfma-logo.png" alt="Pastoral FMA" class="gallery-image" />
@@ -754,7 +765,7 @@
             </div>
           </div>
 
-          <!-- DOWN-LEFT: 3 images (UPDATED ADDRESSES) -->
+          <!-- DOWN-LEFT: 3 images -->
           <div class="modal-bottom-logos">
             <img src="pastoral-logo.png" alt="Pastoral Juvenil" class="modal-bottom-img" />
             <img src="pastoralfma-logo.png" alt="Pastoral FMA" class="modal-bottom-img" />
@@ -775,7 +786,7 @@
   <!-- JAVASCRIPT: POPUP CUSTOM LAYOUTS -->
   <script>
     const popupContent = {
-      // 1. MISIÓN INFORMATIVA
+      // 📍 1. MISIÓN INFORMATIVA (WITH ROUNDED BLOCKS)
       "mision-informativa": {
         title: "MISIÓN INFORMATIVA",
         subtitle: "PROPÓSITO INSTITUCIONAL Y VALORES JUVENILES",
