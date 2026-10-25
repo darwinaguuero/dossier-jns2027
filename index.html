@@ -312,32 +312,13 @@
       margin-top: 18px;
     }
 
-    .mision-angled-block {
+    ..mision-angled-block {
       background-color: #bed7de;
-      padding: 22px 16px; /* Extra padding so text breathes away from the cut corners */
+      padding: 18px 16px;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      
-      /* 📍 INCREASED ANGLE: Changed 12px to 24px for a much deeper, more dramatic angle */
-      clip-path: polygon(
-        24px 0, 
-        calc(100% - 24px) 0, 
-        100% 24px, 
-        100% calc(100% - 24px), 
-        calc(100% - 24px) 100%, 
-        24px 100%, 
-        0 calc(100% - 24px), 
-        0 24px
-      );
-    }
-
-    .mision-block-title {
-      font-size: 0.88rem;
-      font-weight: 800;
-      color: #2e3749;
-      text-align: center;
-      margin-bottom: 8px;
+      border-radius: 16px; /* 📍 Smooth rounded corners (no angle cuts) */
     }
 
     .mision-block-desc {
