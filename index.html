@@ -712,6 +712,42 @@
         grid-template-columns: 1fr;
       }
     }
+    /* 📍 4 Blocks Grid for Garantía */
+    .garantia-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 16px 0 24px 0;
+    }
+
+    .garantia-card {
+      border-radius: 14px;     /* Smooth rounded corners */
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .garantia-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .garantia-desc {
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    /* Stacks into 1 column on mobile phones */
+    @media (max-width: 650px) {
+      .garantia-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1140,9 +1176,43 @@
       // 9. GARANTÍA
       "garantia": {
         title: "GARANTÍA",
-        subtitle: "AUDITORÍA, INFORME ROI Y RENDICIÓN DE CUENTAS",
+        subtitle: "Cada peso, rendido y medido", // Keeps the top clean without an extra subtitle
         render: () => `
-          <p class="narrative-text">Compromiso absoluto de rendición de cuentas, auditoría y entrega de evidencia del impacto alcanzado.</p>
+          <div class="garantia-grid">
+
+            <!-- 📍 BLOCK 1: Transparencia financiera (#2e3749) -->
+            <div class="garantia-card" style="background-color: #2e3749; color: #ffffff;">
+              <h3 class="garantia-title" style="color: #f1a475;">Transparencia financiera</h3>
+              <p class="garantia-desc" style="color: #ffffff;">
+                Cuenta exclusiva para los Juegos, informe público de uso de fondos antes del 31 de mayo de 2027.
+              </p>
+            </div>
+
+            <!-- 📍 BLOCK 2: Informe de retorno de marca (#bed7de) -->
+            <div class="garantia-card" style="background-color: #bed7de; color: #2e3749;">
+              <h3 class="garantia-title" style="color: #2e3749;">Informe de retorno de marca</h3>
+              <p class="garantia-desc" style="color: #2e3749;">
+                Fotos de cada contrapartida, alcance en redes y transmisión, menciones en prensa y asistencia por sede.
+              </p>
+            </div>
+
+            <!-- 📍 BLOCK 3: Beneficio fiscal (#bed7de) -->
+            <div class="garantia-card" style="background-color: #bed7de; color: #2e3749;">
+              <h3 class="garantia-title" style="color: #2e3749;">Beneficio fiscal</h3>
+              <p class="garantia-desc" style="color: #2e3749;">
+                Las donaciones a entidades sin fines de lucro habilitadas son deducibles del ISR hasta el 5 % de la renta neta imponible (Art. 287, lit. i, Código Tributario). Consulte a su asesor.
+              </p>
+            </div>
+
+            <!-- 📍 BLOCK 4: Coherencia de valores (#2e3749) -->
+            <div class="garantia-card" style="background-color: #2e3749; color: #ffffff;">
+              <h3 class="garantia-title" style="color: #f1a475;">Coherencia de valores</h3>
+              <p class="garantia-desc" style="color: #ffffff;">
+                Sin marcas de alcohol, tabaco ni apuestas. La imagen de los atletas menores solo se usa con la autorización de sus tutores.
+              </p>
+            </div>
+
+          </div>
         `
       },
 
