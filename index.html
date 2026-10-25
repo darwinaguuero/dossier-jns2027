@@ -640,6 +640,23 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* 📍 Styling for the image inside the popup */
+    .popup-image-wrapper {
+      margin: 10px 0 24px 0;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .popup-content-img {
+      width: 100%;
+      max-width: 580px;      /* Adjust maximum width as desired */
+      height: auto;          /* Keeps natural proportions without cropping */
+      object-fit: contain;
+      border-radius: 12px;   /* Clean rounded corners */
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -1014,9 +1031,16 @@
       // 7. QUÉ RECIBE SU MARCA
       "que-recibe-su-marca": {
         title: "QUÉ RECIBE SU MARCA EN CADA NIVEL",
-        subtitle: "BENEFICIOS DE MARCA E INVERSIÓN SOCIAL",
+        subtitle: "", // 📍 Subtitle deleted
         render: () => `
-          <p class="narrative-text">Beneficios medibles y tangibles de posicionamiento institucional, comercial y de responsabilidad social corporativa para cada categoría aliada.</p>
+          <!-- 📍 IMAGE BELOW THE RECTANGLE -->
+          <div class="popup-image-wrapper">
+            <img 
+              src="tabla-marcas.png" 
+              alt="Qué recibe su marca en cada nivel" 
+              class="popup-content-img" 
+            />
+          </div>
         `
       },
 
@@ -1078,8 +1102,8 @@
       const data = popupContent[topicKey];
       if (data) {
         modalTitle.textContent = data.title;
-        
-        // 📍 If there is a subtitle, display it; otherwise, hide it completely
+
+        // 📍 Hides the subtitle line completely when it is empty
         if (data.subtitle && data.subtitle.trim() !== "") {
           modalSubtitle.textContent = data.subtitle;
           modalSubtitle.style.display = "block";
