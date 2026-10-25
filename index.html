@@ -657,6 +657,61 @@
       border-radius: 12px;   /* Clean rounded corners */
       display: block;
     }
+
+    /* 📍 Two rounded blocks layout (Otras formas de aportar) */
+    .support-blocks-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 18px 0 24px 0;
+    }
+
+    .support-card {
+      border-radius: 16px;     /* Smooth rounded corners */
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .support-card-title {
+      font-size: 1.1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .support-card-price {
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    .support-card-desc {
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .support-bullet-list {
+      list-style-type: disc;
+      padding-left: 20px;
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    .support-bullet-list li {
+      margin-bottom: 4px;
+    }
+
+    /* Stacks into 1 column on smaller screens */
+    @media (max-width: 650px) {
+      .support-blocks-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1047,9 +1102,38 @@
       // 8. OTRAS FORMAS DE APORTAR
       "otras-formas": {
         title: "OTRAS FORMAS DE APORTAR",
-        subtitle: "MODALIDADES EN ESPECIE Y ALIANZAS LOGÍSTICAS",
+        subtitle: "Con sus productos o con una beca", // Leave empty if you don't want an extra subtitle
         render: () => `
-          <p class="narrative-text">Modalidades flexibles de contribución en especie o servicios logísticos que complementan la ejecución del evento.</p>
+          <div class="support-blocks-grid">
+
+            <!-- 📍 BLOCK 1: PROVEEDOR OFICIAL (#bed7de) -->
+            <div class="support-card" style="background-color: #bed7de; color: #2e3749;">
+              <h3 class="support-card-title" style="color: #2e3749;">Proveedor Oficial</h3>
+              <p class="support-card-desc" style="color: #2e3749; margin-bottom: 10px;">
+                Aporte en especie a valor de mercado, con beneficios equivalentes al nivel que alcance. Lo que más necesitamos:
+              </p>
+              <ul class="support-bullet-list" style="color: #2e3749;">
+                <li>Agua e isotónicos (≈25,000 unidades al día)</li>
+                <li>Meriendas energéticas para atletas</li>
+                <li>Hospedaje y transporte de delegaciones</li>
+                <li>Póliza de accidentes para participantes</li>
+                <li>Uniformes, balones y utilería</li>
+              </ul>
+            </div>
+
+            <!-- 📍 BLOCK 2: ADOPTA UN ATLETA (#2e3749) -->
+            <div class="support-card" style="background-color: #2e3749; color: #ffffff;">
+              <h3 class="support-card-title" style="color: #f1a475;">Adopta un atleta</h3>
+              <div class="support-card-price" style="color: #ffffff;">RD$8,000</div>
+              <p class="support-card-desc" style="color: #ffffff; margin-bottom: 12px;">
+                Cubre el hospedaje y el uniforme de un atleta del interior durante los cuatro días. Pensado para pymes, exalumnos salesianos y familias.
+              </p>
+              <p class="support-card-desc" style="color: #ffffff;">
+                Recibe un certificado, su nombre en el muro de donantes y un recibo de donación.
+              </p>
+            </div>
+
+          </div>
         `
       },
 
