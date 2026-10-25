@@ -304,9 +304,7 @@
       margin-bottom: 14px;
     }
 
-    /* ================================================= */
-    /* 📍 CORNER-ANGLED BLOCKS (MISIÓN INFORMATIVA)       */
-    /* ================================================= */
+    /* Misión Informativa Angled Blocks */
     .mision-blocks-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -320,7 +318,6 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      /* 4-corner chamfer/angle */
       clip-path: polygon(
         12px 0, 
         calc(100% - 12px) 0, 
@@ -349,7 +346,7 @@
       font-weight: 500;
     }
 
-    /* 1. CIRCLES STYLING (A QUIÉN LLEGA SU MARCA) */
+    /* Circles (A quién llega su marca) */
     .circles-wrapper {
       display: flex;
       justify-content: space-between;
@@ -390,7 +387,7 @@
       line-height: 1.2;
     }
 
-    /* 2. NINE RECTANGLES (COMPETICIÓN OFICIAL) */
+    /* Sports Grid (Competición Oficial) */
     .sports-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -411,7 +408,7 @@
       box-shadow: 0 4px 10px rgba(243, 174, 122, 0.25);
     }
 
-    /* 3. BUDGET INFOGRAPHIC (PRESUPUESTO) */
+    /* Budget Infographic */
     .budget-infographic {
       display: flex;
       gap: 24px;
@@ -502,7 +499,7 @@
       margin-top: 10px;
     }
 
-    /* 4. FOUR PARTICIPATION TIERS (NIVELES) */
+    /* Tiers Grid */
     .tiers-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -672,7 +669,7 @@
     </div>
   </main>
 
-  <!-- 📍 THREE UNCROPPED IMAGES -->
+  <!-- 📍 THREE UNCROPPED IMAGES (UPDATED ADDRESSES) -->
   <section class="gallery-container">
     <img src="pastoral-logo.png" alt="Pastoral Juvenil" class="gallery-image" />
     <img src="pastoralfma-logo.png" alt="Pastoral FMA" class="gallery-image" />
@@ -747,7 +744,7 @@
   </nav>
 
   <!-- ================================================= -->
-  <!-- 📍 MODAL / POPUP WITH CUSTOM DESIGN PER TOPIC     -->
+  <!-- 📍 MODAL / POPUP                                  -->
   <!-- ================================================= -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-card">
@@ -774,7 +771,7 @@
             </div>
           </div>
 
-          <!-- DOWN-LEFT: 3 images uncropped -->
+          <!-- DOWN-LEFT: 3 images (UPDATED ADDRESSES) -->
           <div class="modal-bottom-logos">
             <img src="pastoral-logo.png" alt="Pastoral Juvenil" class="modal-bottom-img" />
             <img src="pastoralfma-logo.png" alt="Pastoral FMA" class="modal-bottom-img" />
@@ -784,7 +781,7 @@
 
         <!-- RIGHT COLUMN: logo-juegos.jpg -->
         <div class="modal-right-column">
-          <img src="C:/Users/darwi/Documents/Projects/JNS/images/logo-juegos.jpg" alt="Logo Juegos Salesianos 2027" class="modal-right-logo" />
+          <img src="logo-juegos.jpg" alt="Logo Juegos Salesianos 2027" class="modal-right-logo" />
         </div>
 
       </div>
@@ -795,7 +792,7 @@
   <!-- JAVASCRIPT: POPUP CUSTOM LAYOUTS -->
   <script>
     const popupContent = {
-      // 📍 1. MISIÓN INFORMATIVA (WITH 3 CORNER-ANGLED BLOCKS #bed7de)
+      // 1. MISIÓN INFORMATIVA
       "mision-informativa": {
         title: "MISIÓN INFORMATIVA",
         subtitle: "PROPÓSITO INSTITUCIONAL Y VALORES JUVENILES",
@@ -803,19 +800,16 @@
           <p class="narrative-text">Los XVII Juegos Nacionales Salesianos 2027 buscan integrar a la juventud dominicana a través del deporte, promoviendo valores éticos, compañerismo y superación personal bajo el carisma pedagógico y preventivo de San Juan Bosco.</p>
           
           <div class="mision-blocks-grid">
-            <!-- Block 1 -->
             <div class="mision-angled-block">
               <h4 class="mision-block-title">Ambiente Protector</h4>
               <p class="mision-block-desc">Espacios deportivos seguros que alejan a la juventud de los riesgos sociales.</p>
             </div>
 
-            <!-- Block 2 -->
             <div class="mision-angled-block">
               <h4 class="mision-block-title">Juego limpio</h4>
               <p class="mision-block-desc">Disciplina, respeto al adversario y valores vividos en la cancha, no solo enseñados.</p>
             </div>
 
-            <!-- Block 3 -->
             <div class="mision-angled-block">
               <h4 class="mision-block-title">Liderazgo juvenil</h4>
               <p class="mision-block-desc">300 voluntarios jóvenes formados como líderes para sus centros y oratorios.</p>
@@ -824,7 +818,7 @@
         `
       },
 
-      // 2. A QUIÉN LLEGA SU MARCA (4 CIRCLES #f3ae7a)
+      // 2. A QUIÉN LLEGA SU MARCA
       "a-quien-llega": {
         title: "A QUIÉN LLEGA SU MARCA",
         subtitle: "Una audiencia joven, nacional y familiar.",
@@ -861,7 +855,7 @@
         `
       },
 
-      // 4. COMPETICIÓN OFICIAL (9 RECTANGLES #f3ae7a)
+      // 4. COMPETICIÓN OFICIAL
       "competicion-oficial": {
         title: "COMPETICIÓN OFICIAL",
         subtitle: "Nueve disciplinas, nueve copas con su marca",
@@ -881,7 +875,7 @@
         `
       },
 
-      // 5. PRESUPUESTO (INFOGRAPHIC & HORIZONTAL BAR CHART)
+      // 5. PRESUPUESTO
       "presupuesto": {
         title: "PRESUPUESTO",
         subtitle: "DISTRIBUCIÓN Y TRANSPARENCIA FINANCIERA",
@@ -964,13 +958,12 @@
         `
       },
 
-      // 6. NIVELES DE PARTICIPACIÓN (4 TIERS)
+      // 6. NIVELES DE PARTICIPACIÓN
       "niveles-participacion": {
         title: "NIVELES DE PARTICIPACIÓN",
         subtitle: "Cuatro formas de ser parte de los Juegos",
         render: () => `
           <div class="tiers-grid">
-            <!-- Card 1: ORO -->
             <div class="tier-card" style="background-color: #2e3749; color: #ffffff;">
               <div class="tier-title-container">
                 <div class="tier-name" style="color: #f1a475;">PATROCINIO ORO</div>
@@ -982,7 +975,6 @@
               </p>
             </div>
 
-            <!-- Card 2: PLATA -->
             <div class="tier-card" style="background-color: #bed7de; color: #2e3749;">
               <div class="tier-title-container">
                 <div class="tier-name" style="color: #c9282d;">PATROCINIO PLATA</div>
@@ -994,7 +986,6 @@
               </p>
             </div>
 
-            <!-- Card 3: BRONCE -->
             <div class="tier-card" style="background-color: #bed7de; color: #2e3749;">
               <div class="tier-title-container">
                 <div class="tier-name" style="color: #2e3749;">PATROCINIO BRONCE</div>
@@ -1006,7 +997,6 @@
               </p>
             </div>
 
-            <!-- Card 4: PLATINO -->
             <div class="tier-card" style="background-color: #bed7de; color: #2e3749;">
               <div class="tier-title-container">
                 <div class="tier-name" style="color: #ffffff; text-shadow: 0 1px 2px rgba(0,0,0,0.4);">PATROCINIO PLATINO</div>
