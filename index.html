@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dossier Oficial - XVII Juegos Nacionales Salesianos 2027</title>
 
-  <link rel="icon" type="image/png" href="favicon-16x16.png" />
+  <!-- 📍 FAVICON -->
+  <link rel="icon" type="image/jpeg" href="logo-juegos.jpg" />
 
   <!-- Geometric Sans-Serif Font: Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -296,17 +297,59 @@
       margin-bottom: 30px;
     }
 
-    /* Generic paragraph style */
     .narrative-text {
       color: #2e3749;
       font-size: 0.95rem;
       line-height: 1.65;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     /* ================================================= */
-    /* 1. CIRCLES STYLING (A QUIÉN LLEGA SU MARCA)       */
+    /* 📍 CORNER-ANGLED BLOCKS (MISIÓN INFORMATIVA)       */
     /* ================================================= */
+    .mision-blocks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .mision-angled-block {
+      background-color: #bed7de;
+      padding: 18px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      /* 4-corner chamfer/angle */
+      clip-path: polygon(
+        12px 0, 
+        calc(100% - 12px) 0, 
+        100% 12px, 
+        100% calc(100% - 12px), 
+        calc(100% - 12px) 100%, 
+        12px 100%, 
+        0 calc(100% - 12px), 
+        0 12px
+      );
+    }
+
+    .mision-block-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #2e3749;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .mision-block-desc {
+      font-size: 0.78rem;
+      color: #2e3749;
+      line-height: 1.45;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* 1. CIRCLES STYLING (A QUIÉN LLEGA SU MARCA) */
     .circles-wrapper {
       display: flex;
       justify-content: space-between;
@@ -347,9 +390,7 @@
       line-height: 1.2;
     }
 
-    /* ================================================= */
-    /* 2. NINE RECTANGLES (COMPETICIÓN OFICIAL)          */
-    /* ================================================= */
+    /* 2. NINE RECTANGLES (COMPETICIÓN OFICIAL) */
     .sports-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -370,9 +411,7 @@
       box-shadow: 0 4px 10px rgba(243, 174, 122, 0.25);
     }
 
-    /* ================================================= */
-    /* 3. BUDGET INFOGRAPHIC (PRESUPUESTO)               */
-    /* ================================================= */
+    /* 3. BUDGET INFOGRAPHIC (PRESUPUESTO) */
     .budget-infographic {
       display: flex;
       gap: 24px;
@@ -463,9 +502,7 @@
       margin-top: 10px;
     }
 
-    /* ================================================= */
-    /* 4. FOUR PARTICIPATION TIERS (NIVELES)             */
-    /* ================================================= */
+    /* 4. FOUR PARTICIPATION TIERS (NIVELES) */
     .tiers-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -593,6 +630,9 @@
         border-bottom: 1.5px solid #f1f5f9;
         padding-bottom: 14px;
       }
+      .mision-blocks-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 600px) {
@@ -628,15 +668,15 @@
 
     <!-- 📍 LOGO -->
     <div class="logo-container">
-      <img src="logo-juegos.jpg" alt="Logo Juegos Salesianos 2027" class="event-logo" />
+      <img src="C:/Users/darwi/Documents/Projects/JNS/images/logo-juegos.jpg" alt="Logo Juegos Salesianos 2027" class="event-logo" />
     </div>
   </main>
 
   <!-- 📍 THREE UNCROPPED IMAGES -->
   <section class="gallery-container">
-    <img src="pastoral-logo.png" alt="Pastoral Juvenil" class="gallery-image" />
-    <img src="pastoralfma-logo.png" alt="Pastoral FMA" class="gallery-image" />
-    <img src="donboscof-logo.png" alt="Don Bosco F" class="gallery-image" />
+    <img src="C:/Users/darwi/Documents/Projects/JNS/images/pastoral-logo.png" alt="Pastoral Juvenil" class="gallery-image" />
+    <img src="C:/Users/darwi/Documents/Projects/JNS/images/pastoralfma-logo.png" alt="Pastoral FMA" class="gallery-image" />
+    <img src="C:/Users/darwi/Documents/Projects/JNS/images/donboscof-logo.png" alt="Don Bosco F" class="gallery-image" />
   </section>
 
   <!-- 📍 12 INTERACTIVE POPUP BUTTONS -->
@@ -728,7 +768,7 @@
             <!-- Title directly under the rectangle -->
             <h2 class="modal-subtitle" id="modalSubtitle">Subtítulo</h2>
 
-            <!-- 📍 DYNAMIC CUSTOM CONTENT CONTAINER (No generic blocks) -->
+            <!-- DYNAMIC CUSTOM CONTENT CONTAINER -->
             <div class="modal-body-container" id="modalBodyContainer">
               <!-- Rendered per topic dynamically -->
             </div>
@@ -736,15 +776,15 @@
 
           <!-- DOWN-LEFT: 3 images uncropped -->
           <div class="modal-bottom-logos">
-            <img src="pastoral-logo.png" alt="Pastoral Juvenil" class="modal-bottom-img" />
-            <img src="pastoralfma-logo.png" alt="Pastoral FMA" class="modal-bottom-img" />
-            <img src="donboscof-logo.png" alt="Don Bosco F" class="modal-bottom-img" />
+            <img src="C:/Users/darwi/Documents/Projects/JNS/images/pastoral-logo.png" alt="Pastoral Juvenil" class="modal-bottom-img" />
+            <img src="C:/Users/darwi/Documents/Projects/JNS/images/pastoralfma-logo.png" alt="Pastoral FMA" class="modal-bottom-img" />
+            <img src="C:/Users/darwi/Documents/Projects/JNS/images/donboscof-logo.png" alt="Don Bosco F" class="modal-bottom-img" />
           </div>
         </div>
 
         <!-- RIGHT COLUMN: logo-juegos.jpg -->
         <div class="modal-right-column">
-          <img src="logo-juegos.jpg" alt="Logo Juegos Salesianos 2027" class="modal-right-logo" />
+          <img src="C:/Users/darwi/Documents/Projects/JNS/images/logo-juegos.jpg" alt="Logo Juegos Salesianos 2027" class="modal-right-logo" />
         </div>
 
       </div>
@@ -755,12 +795,32 @@
   <!-- JAVASCRIPT: POPUP CUSTOM LAYOUTS -->
   <script>
     const popupContent = {
-      // 1. MISIÓN INFORMATIVA
+      // 📍 1. MISIÓN INFORMATIVA (WITH 3 CORNER-ANGLED BLOCKS #bed7de)
       "mision-informativa": {
         title: "MISIÓN INFORMATIVA",
-        subtitle: "El deporte como patio salesiano",
+        subtitle: "PROPÓSITO INSTITUCIONAL Y VALORES JUVENILES",
         render: () => `
-          <p class="narrative-text">Con más de 37 años de trayectoria, los Juegos Nacionales Salesianos son el mayor encuentro formativo y deportivo de la obra de Don Bosco en el país. A lo largo de su historia han llegado a más de 68,000 niños, niñas, adolescentes y jóvenes.</p>
+          <p class="narrative-text">Los XVII Juegos Nacionales Salesianos 2027 buscan integrar a la juventud dominicana a través del deporte, promoviendo valores éticos, compañerismo y superación personal bajo el carisma pedagógico y preventivo de San Juan Bosco.</p>
+          
+          <div class="mision-blocks-grid">
+            <!-- Block 1 -->
+            <div class="mision-angled-block">
+              <h4 class="mision-block-title">Ambiente Protector</h4>
+              <p class="mision-block-desc">Espacios deportivos seguros que alejan a la juventud de los riesgos sociales.</p>
+            </div>
+
+            <!-- Block 2 -->
+            <div class="mision-angled-block">
+              <h4 class="mision-block-title">Juego limpio</h4>
+              <p class="mision-block-desc">Disciplina, respeto al adversario y valores vividos en la cancha, no solo enseñados.</p>
+            </div>
+
+            <!-- Block 3 -->
+            <div class="mision-angled-block">
+              <h4 class="mision-block-title">Liderazgo juvenil</h4>
+              <p class="mision-block-desc">300 voluntarios jóvenes formados como líderes para sus centros y oratorios.</p>
+            </div>
+          </div>
         `
       },
 
@@ -827,18 +887,15 @@
         subtitle: "DISTRIBUCIÓN Y TRANSPARENCIA FINANCIERA",
         render: () => `
           <div class="budget-infographic">
-            <!-- Left Pane -->
             <div class="budget-left-pane">
               <h3 class="budget-headline">Todo está bien calculado y más</h3>
               <div class="budget-key-stat">72.5 %</div>
               <p class="budget-supporting-text">del presupuesto total de RD$64.2 millones se destina a hospedaje, comida, transporte y uniformes de los atletas.</p>
             </div>
 
-            <!-- Right Pane: Horizontal Bar Chart -->
             <div class="budget-right-pane">
               <div class="budget-col-header">PARTIDAS: RD$ MILLONES</div>
 
-              <!-- Bar 1: Alojamiento (23.40) -->
               <div class="bar-row">
                 <div class="bar-label-line">
                   <span>Alojamiento (1,200 atletas del interior)</span>
@@ -849,7 +906,6 @@
                 </div>
               </div>
 
-              <!-- Bar 2: Alimentación (12.26) -->
               <div class="bar-row">
                 <div class="bar-label-line">
                   <span>Alimentación e hidratación • Comedores Económicos</span>
@@ -860,7 +916,6 @@
                 </div>
               </div>
 
-              <!-- Bar 3: Uniformes (6.00) -->
               <div class="bar-row">
                 <div class="bar-label-line">
                   <span>Uniformes oficiales</span>
@@ -871,7 +926,6 @@
                 </div>
               </div>
 
-              <!-- Bar 4: Transporte (4.90) -->
               <div class="bar-row">
                 <div class="bar-label-line">
                   <span>Transporte</span>
@@ -882,7 +936,6 @@
                 </div>
               </div>
 
-              <!-- Bar 5: Acreditaciones & montaje (6.68) -->
               <div class="bar-row">
                 <div class="bar-label-line">
                   <span>Acreditaciones, montaje y contingencias</span>
@@ -893,7 +946,6 @@
                 </div>
               </div>
 
-              <!-- Bar 6: Operación conjunta (11.00) -->
               <div class="bar-row">
                 <div class="bar-label-line">
                   <span>Ceremonias (3.75) • Árbitros (3.28) • Premiación (2.30) • Utilería (1.66)</span>
@@ -918,7 +970,6 @@
         subtitle: "Cuatro formas de ser parte de los Juegos",
         render: () => `
           <div class="tiers-grid">
-
             <!-- Card 1: ORO -->
             <div class="tier-card" style="background-color: #2e3749; color: #ffffff;">
               <div class="tier-title-container">
@@ -966,7 +1017,6 @@
                 Presencia institucional en sedes, web y redes oficiales.
               </p>
             </div>
-
           </div>
           <div class="tier-bold-footer">
             Cada nivel admite hasta un 50 % en especie a valor de mercado.
@@ -1037,7 +1087,6 @@
     const closeBtn = document.getElementById('modalCloseBtn');
     const buttons = document.querySelectorAll('.nav-card');
 
-    // Open Modal Function
     function openModal(topicKey) {
       const data = popupContent[topicKey];
       if (data) {
@@ -1050,13 +1099,11 @@
       }
     }
 
-    // Close Modal Function
     function closeModal() {
       overlay.classList.remove('active');
       document.body.style.overflow = '';
     }
 
-    // Button Click Listeners
     buttons.forEach(button => {
       button.addEventListener('click', () => {
         const topic = button.getAttribute('data-topic');
