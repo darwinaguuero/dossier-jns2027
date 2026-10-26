@@ -42,7 +42,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 28px;
+      gap: 24px;
       max-width: 720px;
     }
 
@@ -93,6 +93,31 @@
       display: block;
     }
 
+    /* 📍 ANIMATED PHRASE BELOW THE MAIN TITLE */
+    .animated-phrase {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 700;
+      font-style: italic;
+      color: #d90429;
+      letter-spacing: 0.5px;
+      margin-top: -10px;
+      display: inline-block;
+      animation: phrasePulse 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes phrasePulse {
+      0% {
+        opacity: 0.85;
+        transform: translateY(0);
+        text-shadow: 0 0 0 rgba(217, 4, 41, 0);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(-2px);
+        text-shadow: 0 4px 14px rgba(217, 4, 41, 0.35);
+      }
+    }
+
     .logo-container {
       flex-shrink: 0;
       display: flex;
@@ -128,7 +153,7 @@
       display: block;
     }
 
-    /* 12 Buttons Grid */
+    /* 11 Navigation Buttons Grid (Comité organizador deleted) */
     .nav-section {
       max-width: 1200px;
       margin: 55px auto 40px auto;
@@ -305,8 +330,55 @@
     }
 
     /* ================================================= */
-    /* 📍 MISIÓN INFORMATIVA: ROUNDED BLOCKS             */
+    /* 📍 CONTACTOS Y COMITÉ ORGANIZADOR STYLING         */
     /* ================================================= */
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 14px 0 24px 0;
+    }
+
+    .contact-card {
+      border-radius: 16px;
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .contact-card-title {
+      font-size: 0.95rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1.5px solid rgba(0, 0, 0, 0.08);
+      padding-bottom: 8px;
+      margin-bottom: 2px;
+    }
+
+    .contact-card.dark .contact-card-title {
+      border-bottom-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .person-entry {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .person-name {
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    .person-desc {
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
+    /* Misión Informativa */
     .mision-blocks-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -320,7 +392,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      border-radius: 16px; /* Smooth rounded corners */
+      border-radius: 16px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
     }
 
@@ -340,7 +412,7 @@
       font-weight: 500;
     }
 
-    /* Circles (A quién llega su marca) */
+    /* Circles (A quién llega) */
     .circles-wrapper {
       display: flex;
       justify-content: space-between;
@@ -381,22 +453,20 @@
       line-height: 1.2;
     }
 
-    /* Sports Grid (Competición Oficial) */
-    /* 📍 Makes the container wrap them naturally instead of stretching */
+    /* Sports (Competición Oficial) */
     .sports-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;               /* Space between each badge */
+      gap: 10px;
       margin: 18px 0;
     }
 
-    /* 📍 Reduces the rectangle directly to the size of the letters */
     .sport-rect {
-      width: fit-content;       /* Hugs the letters */
+      width: fit-content;
       background-color: #f3ae7a;
       color: #2e3749;
-      padding: 7px 16px;        /* Compact padding around the text */
-      border-radius: 8px;       /* Soft corners */
+      padding: 7px 16px;
+      border-radius: 8px;
       text-align: center;
       font-weight: 800;
       font-size: 0.8rem;
@@ -555,6 +625,97 @@
       margin-top: 10px;
     }
 
+    /* Popup Images */
+    .popup-image-wrapper {
+      margin: 10px 0 24px 0;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .popup-content-img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      display: block;
+    }
+
+    /* Otras Formas Cards */
+    .support-blocks-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 18px 0 24px 0;
+    }
+
+    .support-card {
+      border-radius: 16px;
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .support-card-title {
+      font-size: 1.1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .support-card-price {
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    .support-card-desc {
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .support-bullet-list {
+      list-style-type: disc;
+      padding-left: 20px;
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    /* Garantia Cards */
+    .garantia-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 16px 0 24px 0;
+    }
+
+    .garantia-card {
+      border-radius: 14px;
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .garantia-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .garantia-desc {
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
     /* Down-Left: 3 small logos */
     .modal-bottom-logos {
       display: flex;
@@ -591,7 +752,7 @@
       display: block;
     }
 
-    /* Responsive */
+    /* Responsive adjustments */
     @media (max-width: 1100px) {
       .buttons-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -613,8 +774,8 @@
       .modal-right-logo {
         max-width: 180px;
       }
-      .tiers-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .tiers-grid, .support-blocks-grid, .garantia-grid, .contacts-grid {
+        grid-template-columns: 1fr;
       }
       .budget-infographic {
         flex-direction: column;
@@ -633,118 +794,7 @@
       .buttons-grid {
         grid-template-columns: 1fr;
       }
-      .sports-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
       .tiers-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* 📍 Image styling inside popups */
-    .popup-image-wrapper {
-      margin: 10px 0 24px 0;
-      width: 100%;
-      display: flex;
-      justify-content: flex-start;
-    }
-
-    .popup-content-img {
-      width: 100%;
-      max-width: 580px;      /* Adjust maximum width as needed */
-      height: auto;          /* Maintains full image without cropping */
-      object-fit: contain;
-      border-radius: 12px;   /* Clean rounded corners */
-      display: block;
-    }
-
-    /* 📍 Two rounded blocks layout (Otras formas de aportar) */
-    .support-blocks-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin: 18px 0 24px 0;
-    }
-
-    .support-card {
-      border-radius: 16px;     /* Smooth rounded corners */
-      padding: 22px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .support-card-title {
-      font-size: 1.1rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 8px;
-    }
-
-    .support-card-price {
-      font-size: 1.6rem;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      margin-bottom: 10px;
-    }
-
-    .support-card-desc {
-      font-size: 0.85rem;
-      line-height: 1.5;
-    }
-
-    .support-bullet-list {
-      list-style-type: disc;
-      padding-left: 20px;
-      font-size: 0.82rem;
-      line-height: 1.6;
-    }
-
-    .support-bullet-list li {
-      margin-bottom: 4px;
-    }
-
-    /* Stacks into 1 column on smaller screens */
-    @media (max-width: 650px) {
-      .support-blocks-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    /* 📍 4 Blocks Grid for Garantía */
-    .garantia-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin: 16px 0 24px 0;
-    }
-
-    .garantia-card {
-      border-radius: 14px;     /* Smooth rounded corners */
-      padding: 20px 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
-    }
-
-    .garantia-title {
-      font-size: 0.95rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 8px;
-    }
-
-    .garantia-desc {
-      font-size: 0.82rem;
-      line-height: 1.5;
-    }
-
-    /* Stacks into 1 column on mobile phones */
-    @media (max-width: 650px) {
-      .garantia-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -766,6 +816,9 @@
         <span>XVII JUEGOS NACIONALES</span>
         <span>SALESIANOS 2027</span>
       </h1>
+
+      <!-- 📍 ANIMATED PHRASE -->
+      <p class="animated-phrase">«Juguemos juntos por la juventud dominicana»</p>
     </div>
 
     <!-- 📍 LOGO -->
@@ -781,7 +834,7 @@
     <img src="donboscof-logo.png" alt="Don Bosco F" class="gallery-image" />
   </section>
 
-  <!-- 📍 12 INTERACTIVE POPUP BUTTONS -->
+  <!-- 📍 11 INTERACTIVE POPUP BUTTONS (Comité organizador deleted) -->
   <nav class="nav-section">
     <div class="buttons-grid">
 
@@ -840,11 +893,6 @@
         <span class="arrow">→</span>
       </button>
 
-      <button class="nav-card" data-topic="comite-organizador">
-        <span>COMITÉ ORGANIZADOR</span>
-        <span class="arrow">→</span>
-      </button>
-
     </div>
   </nav>
 
@@ -863,7 +911,7 @@
         <div class="modal-left-column">
           <div>
             <!-- Red Rectangle with Button Topic Title -->
-            <div class="modal-red-rectangle">
+            <div class="modal-red-rectangle" id="modalRedRect">
               <span class="modal-rectangle-text" id="modalTitle">TÍTULO</span>
             </div>
 
@@ -897,12 +945,12 @@
   <!-- JAVASCRIPT: POPUP CUSTOM LAYOUTS -->
   <script>
     const popupContent = {
-      // 📍 1. MISIÓN INFORMATIVA (WITH ROUNDED BLOCKS)
+      // 1. MISIÓN INFORMATIVA
       "mision-informativa": {
         title: "MISIÓN INFORMATIVA",
-        subtitle: "El deporte como patio salesiano",
+        subtitle: "PROPÓSITO INSTITUCIONAL Y VALORES JUVENILES",
         render: () => `
-          <p class="narrative-text">Con más de 37 años de trayectoria, los Juegos Nacionales Salesianos son el mayor encuentro formativo y deportivo de la obra de Don Bosco en el país. A lo largo de su historia han llegado a más de 68,000 niños, niñas, adolescentes y jóvenes.</p>
+          <p class="narrative-text">Los XVII Juegos Nacionales Salesianos 2027 buscan integrar a la juventud dominicana a través del deporte, promoviendo valores éticos, compañerismo y superación personal bajo el carisma pedagógico y preventivo de San Juan Bosco.</p>
           
           <div class="mision-blocks-grid">
             <div class="mision-angled-block">
@@ -930,20 +978,20 @@
         render: () => `
           <div class="circles-wrapper">
             <div class="circle-item">
-              <span class="circle-title">≈4,000</span>
-              <span class="circle-desc">Atletas y entrenadores</span>
+              <span class="circle-title">5,000+</span>
+              <span class="circle-desc">Atletas Jóvenes Directos</span>
             </div>
             <div class="circle-item">
-              <span class="circle-title">1,200</span>
-              <span class="circle-desc">Atletas del interior hospedados en la capital</span>
+              <span class="circle-title">25,000+</span>
+              <span class="circle-desc">Familias en Presencial</span>
             </div>
             <div class="circle-item">
-              <span class="circle-title">45</span>
-              <span class="circle-desc">Centros salesianos de todo el país</span>
+              <span class="circle-title">Todo el País</span>
+              <span class="circle-desc">Comunidades Salesianas</span>
             </div>
             <div class="circle-item">
-              <span class="circle-title">300</span>
-              <span class="circle-desc">Voluntarios certificados</span>
+              <span class="circle-title">En Vivo</span>
+              <span class="circle-desc">Transmisión & Digital</span>
             </div>
           </div>
           <p class="narrative-text">En total, más de 5,000 personas directamente involucradas durante los cuatro días, a las que se suman sus familias y la audiencia de la transmisión en vivo y de las redes oficiales @pjsalesiana y todo el ecosistema salesiano.</p>
@@ -1122,12 +1170,11 @@
       // 7. QUÉ RECIBE SU MARCA
       "que-recibe-su-marca": {
         title: "QUÉ RECIBE SU MARCA EN CADA NIVEL",
-        subtitle: "", // 📍 Subtitle deleted
+        subtitle: "",
         render: () => `
-          <!-- 📍 IMAGE BELOW THE RECTANGLE -->
           <div class="popup-image-wrapper">
             <img 
-              src="tabla-marcas.png" 
+              src="tabla-niveles.png" 
               alt="Qué recibe su marca en cada nivel" 
               class="popup-content-img" 
             />
@@ -1138,11 +1185,9 @@
       // 8. OTRAS FORMAS DE APORTAR
       "otras-formas": {
         title: "OTRAS FORMAS DE APORTAR",
-        subtitle: "Con sus productos o con una beca", // Leave empty if you don't want an extra subtitle
+        subtitle: "",
         render: () => `
           <div class="support-blocks-grid">
-
-            <!-- 📍 BLOCK 1: PROVEEDOR OFICIAL (#bed7de) -->
             <div class="support-card" style="background-color: #bed7de; color: #2e3749;">
               <h3 class="support-card-title" style="color: #2e3749;">Proveedor Oficial</h3>
               <p class="support-card-desc" style="color: #2e3749; margin-bottom: 10px;">
@@ -1157,7 +1202,6 @@
               </ul>
             </div>
 
-            <!-- 📍 BLOCK 2: ADOPTA UN ATLETA (#2e3749) -->
             <div class="support-card" style="background-color: #2e3749; color: #ffffff;">
               <h3 class="support-card-title" style="color: #f1a475;">Adopta un atleta</h3>
               <div class="support-card-price" style="color: #ffffff;">RD$8,000</div>
@@ -1168,7 +1212,6 @@
                 Recibe un certificado, su nombre en el muro de donantes y un recibo de donación.
               </p>
             </div>
-
           </div>
         `
       },
@@ -1176,11 +1219,9 @@
       // 9. GARANTÍA
       "garantia": {
         title: "GARANTÍA",
-        subtitle: "Cada peso, rendido y medido", // Keeps the top clean without an extra subtitle
+        subtitle: "",
         render: () => `
           <div class="garantia-grid">
-
-            <!-- 📍 BLOCK 1: Transparencia financiera (#2e3749) -->
             <div class="garantia-card" style="background-color: #2e3749; color: #ffffff;">
               <h3 class="garantia-title" style="color: #f1a475;">Transparencia financiera</h3>
               <p class="garantia-desc" style="color: #ffffff;">
@@ -1188,7 +1229,6 @@
               </p>
             </div>
 
-            <!-- 📍 BLOCK 2: Informe de retorno de marca (#bed7de) -->
             <div class="garantia-card" style="background-color: #bed7de; color: #2e3749;">
               <h3 class="garantia-title" style="color: #2e3749;">Informe de retorno de marca</h3>
               <p class="garantia-desc" style="color: #2e3749;">
@@ -1196,7 +1236,6 @@
               </p>
             </div>
 
-            <!-- 📍 BLOCK 3: Beneficio fiscal (#bed7de) -->
             <div class="garantia-card" style="background-color: #bed7de; color: #2e3749;">
               <h3 class="garantia-title" style="color: #2e3749;">Beneficio fiscal</h3>
               <p class="garantia-desc" style="color: #2e3749;">
@@ -1204,14 +1243,12 @@
               </p>
             </div>
 
-            <!-- 📍 BLOCK 4: Coherencia de valores (#2e3749) -->
             <div class="garantia-card" style="background-color: #2e3749; color: #ffffff;">
               <h3 class="garantia-title" style="color: #f1a475;">Coherencia de valores</h3>
               <p class="garantia-desc" style="color: #ffffff;">
                 Sin marcas de alcohol, tabaco ni apuestas. La imagen de los atletas menores solo se usa con la autorización de sus tutores.
               </p>
             </div>
-
           </div>
         `
       },
@@ -1219,7 +1256,7 @@
       // 10. FECHAS PARA SU MARCA
       "fechas-marca": {
         title: "FECHAS PARA SU MARCA",
-        subtitle: "Los cupos se asignan por orden de firma", // 📍 Title under the rectangle
+        subtitle: "Los cupos se asignan por orden de firma",
         render: () => `
           <div class="popup-image-wrapper">
             <img 
@@ -1231,27 +1268,59 @@
         `
       },
 
-      // 11. CONTACTOS
+      // 📍 11. CONTACTOS Y COMITÉ ORGANIZADOR (RED RECTANGLE DELETED, 2 CUSTOM BLOCKS)
       "contactos": {
-        title: "CONTACTOS",
-        subtitle: "CANALES DE ENLACE DIRECTO CON LA COMISIÓN",
+        hideBadge: true, // Deletes the red rectangle
+        title: "",
+        subtitle: "CONTACTOS Y COMITÉ ORGANIZADOR",
         render: () => `
-          <p class="narrative-text">Dirección de Patrocinios e Inversión Social:<br><strong>Email:</strong> patrocinios@juegossalesianos2027.org<br><strong>Teléfono:</strong> +1 (809) 000-0000<br>Sede del Comité Organizador.</p>
-        `
-      },
+          <div class="contacts-grid">
 
-      // 12. COMITÉ ORGANIZADOR
-      "comite-organizador": {
-        title: "COMITÉ ORGANIZADOR",
-        subtitle: "ESTRUCTURA DE LIDERAZGO INSTITUCIONAL",
-        render: () => `
-          <p class="narrative-text">Liderazgo pastoral, técnico y logístico con amplia experiencia en la realización de magnos eventos juveniles por parte de la Inspectoría Salesiana, FMA y Fundación Don Bosco.</p>
+            <!-- 📍 BLOCK 1: GESTIÓN DE PATROCINIOS (#bed7de) -->
+            <div class="contact-card" style="background-color: #bed7de; color: #2e3749;">
+              <h3 class="contact-card-title" style="color: #2e3749;">GESTIÓN DE PATROCINIOS</h3>
+              
+              <div class="person-entry">
+                <span class="person-name" style="color: #2e3749;">Msc. Linette Portorreal</span>
+                <span class="person-desc" style="color: #2e3749;">849-455-0863</span>
+                <span class="person-desc" style="color: #2e3749;">recaudaciones@mdb.do</span>
+              </div>
+
+              <div class="person-entry">
+                <span class="person-name" style="color: #2e3749;">Dra. Isis B. Rojas</span>
+                <span class="person-desc" style="color: #2e3749;">829-546-9166</span>
+                <span class="person-desc" style="color: #2e3749;">irojas@donboscofs.org</span>
+              </div>
+            </div>
+
+            <!-- 📍 BLOCK 2: COMITÉ ORGANIZADOR JNS 2027 (#2e3749) -->
+            <div class="contact-card dark" style="background-color: #2e3749; color: #ffffff;">
+              <h3 class="contact-card-title" style="color: #f1a475;">COMITÉ ORGANIZADOR JNS 2027</h3>
+              
+              <div class="person-entry">
+                <span class="person-name" style="color: #ffffff;">P. Ysidro Ramírez, SDB</span>
+                <span class="person-desc" style="color: #cbd5e1;">Presidente del Comité</span>
+              </div>
+
+              <div class="person-entry">
+                <span class="person-name" style="color: #ffffff;">Sr. Franklin Ortega</span>
+                <span class="person-desc" style="color: #cbd5e1;">Coordinador del Comité</span>
+              </div>
+
+              <div class="person-entry">
+                <span class="person-name" style="color: #ffffff;">Sor Rosalía Mena, FMA</span>
+                <span class="person-desc" style="color: #cbd5e1;">Coordinadora Pastoral Juvenil FMA</span>
+              </div>
+            </div>
+
+          </div>
         `
       }
     };
 
     // DOM Elements
     const overlay = document.getElementById('modalOverlay');
+    const modalRedRect = document.getElementById('modalRedRect');
     const modalTitle = document.getElementById('modalTitle');
     const modalSubtitle = document.getElementById('modalSubtitle');
     const modalBodyContainer = document.getElementById('modalBodyContainer');
@@ -1261,15 +1330,21 @@
     function openModal(topicKey) {
       const data = popupContent[topicKey];
       if (data) {
-        modalTitle.textContent = data.title;
-
-        // 📍 Hides the subtitle line completely when it is empty
-        if (data.subtitle && data.subtitle.trim() !== "") {
-          modalSubtitle.textContent = data.subtitle;
-          modalSubtitle.style.display = "block";
+        // 📍 Check if the red rectangle should be deleted/hidden
+        if (data.hideBadge) {
+          modalRedRect.style.display = 'none';
         } else {
-          modalSubtitle.textContent = "";
-          modalSubtitle.style.display = "none";
+          modalRedRect.style.display = 'inline-flex';
+          modalTitle.textContent = data.title;
+        }
+
+        // Subtitle check
+        if (data.subtitle && data.subtitle.trim() !== '') {
+          modalSubtitle.textContent = data.subtitle;
+          modalSubtitle.style.display = 'block';
+        } else {
+          modalSubtitle.textContent = '';
+          modalSubtitle.style.display = 'none';
         }
 
         modalBodyContainer.innerHTML = data.render();
