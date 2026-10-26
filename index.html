@@ -92,23 +92,20 @@
       transition: color 0.3s ease, font-weight 0.3s ease;
     }
 
-    /* ================================================= */
-    /* 📍 BANDA ROJA FIJA AL HACER SCROLL                */
-    /* ================================================= */
+    /* 📍 BANDA ROJA FIJA AL HACER SCROLL */
     .badge-row.scrolled {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background-color: #d90429; /* Fondo rojo para la banda completa */
+      background-color: #d90429;
       padding: 12px 48px;
       box-shadow: 0 4px 20px rgba(217, 4, 41, 0.35);
-      z-index: 950;              /* Por encima del contenido, debajo del modal */
+      z-index: 950;
       justify-content: flex-start;
       gap: 24px;
     }
 
-    /* En la banda roja, el rectángulo pasa a blanco con letras rojas para contrastar */
     .badge-row.scrolled .red-rectangle {
       background-color: #ffffff;
       height: 38px;
@@ -119,7 +116,6 @@
       color: #d90429;
     }
 
-    /* El texto de patrocinio pasa a blanco puro para máxima legibilidad */
     .badge-row.scrolled .subtitle-right {
       color: #ffffff;
       font-weight: 600;
@@ -202,7 +198,7 @@
     /* 11 Navigation Buttons Grid */
     .nav-section {
       max-width: 1200px;
-      margin: 55px auto 40px auto;
+      margin: 55px auto 30px auto;
     }
 
     .buttons-grid {
@@ -247,6 +243,25 @@
 
     .nav-card:hover .arrow {
       transform: translateX(4px);
+    }
+
+    /* ================================================= */
+    /* 📍 FOOTER                                         */
+    /* ================================================= */
+    .site-footer {
+      width: 100%;
+      max-width: 1200px;
+      margin: 40px auto 10px auto;
+      padding-top: 24px;
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+    }
+
+    .site-footer p {
+      color: #64748b;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
     /* Modal / Popups */
@@ -965,6 +980,13 @@
   </nav>
 
   <!-- ================================================= -->
+  <!-- 📍 FOOTER                                         -->
+  <!-- ================================================= -->
+  <footer class="site-footer">
+    <p>Diseñado por Darwin Agüero. 2026</p>
+  </footer>
+
+  <!-- ================================================= -->
   <!-- 📍 MODAL / POPUP                                  -->
   <!-- ================================================= -->
   <div class="modal-overlay" id="modalOverlay">
@@ -1016,7 +1038,6 @@
     const badgeRow = document.getElementById('badgeRow');
 
     window.addEventListener('scroll', () => {
-      // Al hacer scroll más de 60px hacia abajo, se convierte en banda fija roja
       if (window.scrollY > 60) {
         badgeRow.classList.add('scrolled');
       } else {
