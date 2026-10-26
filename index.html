@@ -641,7 +641,7 @@
       }
     }
 
-    /* 📍 Styling for the image inside the popup */
+    /* 📍 Image styling inside popups */
     .popup-image-wrapper {
       margin: 10px 0 24px 0;
       width: 100%;
@@ -651,8 +651,8 @@
 
     .popup-content-img {
       width: 100%;
-      max-width: 580px;      /* Adjust maximum width as desired */
-      height: auto;          /* Keeps natural proportions without cropping */
+      max-width: 580px;      /* Adjust maximum width as needed */
+      height: auto;          /* Maintains full image without cropping */
       object-fit: contain;
       border-radius: 12px;   /* Clean rounded corners */
       display: block;
@@ -1216,12 +1216,11 @@
         `
       },
 
-      // 7. FECHAS PARA SU MARCA
-      "que-recibe-su-marca": {
-        title: "Los cupos se asignan por orden de firma",
-        subtitle: "", // 📍 Subtitle deleted
+      // 10. FECHAS PARA SU MARCA
+      "fechas-marca": {
+        title: "FECHAS PARA SU MARCA",
+        subtitle: "Los cupos se asignan por orden de firma", // 📍 Title under the rectangle
         render: () => `
-          <!-- 📍 IMAGE BELOW THE RECTANGLE -->
           <div class="popup-image-wrapper">
             <img 
               src="fechas-marcas.png" 
