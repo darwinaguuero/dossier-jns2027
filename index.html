@@ -46,10 +46,19 @@
       max-width: 720px;
     }
 
+    /* Envoltorio para evitar saltos de pantalla al hacer scroll */
+    .badge-row-wrapper {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* 📍 BANDA SUPERIOR (ESTADO NORMAL) */
     .badge-row {
       display: flex;
       align-items: center;
       gap: 20px;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .red-rectangle {
@@ -61,6 +70,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background-color 0.3s ease, border 0.3s ease;
     }
 
     .rectangle-text {
@@ -70,6 +80,7 @@
       letter-spacing: 1.5px;
       text-transform: uppercase;
       user-select: none;
+      transition: color 0.3s ease;
     }
 
     .subtitle-right {
@@ -78,6 +89,41 @@
       font-weight: 400;
       letter-spacing: 1.5px;
       text-transform: uppercase;
+      transition: color 0.3s ease, font-weight 0.3s ease;
+    }
+
+    /* ================================================= */
+    /* 📍 BANDA ROJA FIJA AL HACER SCROLL                */
+    /* ================================================= */
+    .badge-row.scrolled {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #d90429; /* Fondo rojo para la banda completa */
+      padding: 12px 48px;
+      box-shadow: 0 4px 20px rgba(217, 4, 41, 0.35);
+      z-index: 950;              /* Por encima del contenido, debajo del modal */
+      justify-content: flex-start;
+      gap: 24px;
+    }
+
+    /* En la banda roja, el rectángulo pasa a blanco con letras rojas para contrastar */
+    .badge-row.scrolled .red-rectangle {
+      background-color: #ffffff;
+      height: 38px;
+      width: 185px;
+    }
+
+    .badge-row.scrolled .rectangle-text {
+      color: #d90429;
+    }
+
+    /* El texto de patrocinio pasa a blanco puro para máxima legibilidad */
+    .badge-row.scrolled .subtitle-right {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.9rem;
     }
 
     .event-title {
@@ -93,7 +139,7 @@
       display: block;
     }
 
-    /* 📍 ANIMATED PHRASE BELOW THE MAIN TITLE */
+    /* Animación de la frase */
     .animated-phrase {
       font-size: clamp(1rem, 2vw, 1.25rem);
       font-weight: 700;
@@ -153,7 +199,7 @@
       display: block;
     }
 
-    /* 11 Navigation Buttons Grid (Comité organizador deleted) */
+    /* 11 Navigation Buttons Grid */
     .nav-section {
       max-width: 1200px;
       margin: 55px auto 40px auto;
@@ -329,9 +375,7 @@
       margin-bottom: 14px;
     }
 
-    /* ================================================= */
-    /* 📍 CONTACTOS Y COMITÉ ORGANIZADOR STYLING         */
-    /* ================================================= */
+    /* Contactos Grid */
     .contacts-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -760,6 +804,10 @@
     }
 
     @media (max-width: 850px) {
+      .badge-row.scrolled {
+        padding: 10px 24px;
+        gap: 14px;
+      }
       .buttons-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -791,6 +839,22 @@
     }
 
     @media (max-width: 600px) {
+      body {
+        padding: 24px;
+      }
+      .badge-row.scrolled {
+        padding: 8px 16px;
+      }
+      .badge-row.scrolled .red-rectangle {
+        width: 150px;
+        height: 32px;
+      }
+      .badge-row.scrolled .rectangle-text {
+        font-size: 0.68rem;
+      }
+      .badge-row.scrolled .subtitle-right {
+        font-size: 0.75rem;
+      }
       .buttons-grid {
         grid-template-columns: 1fr;
       }
@@ -805,11 +869,15 @@
   <!-- TOP SECTION -->
   <main class="hero-container">
     <div class="left-content">
-      <div class="badge-row">
-        <div class="red-rectangle" id="dossierBadge">
-          <span class="rectangle-text">DOSSIER OFICIAL</span>
+      
+      <!-- 📍 ENVOLTORIO Y BANDA CON ANIMACIÓN DE SCROLL -->
+      <div class="badge-row-wrapper">
+        <div class="badge-row" id="badgeRow">
+          <div class="red-rectangle" id="dossierBadge">
+            <span class="rectangle-text">DOSSIER OFICIAL</span>
+          </div>
+          <span class="subtitle-right">PATROCINIO E INVERSIÓN SOCIAL</span>
         </div>
-        <span class="subtitle-right">PATROCINIO E INVERSIÓN SOCIAL</span>
       </div>
 
       <h1 class="event-title">
@@ -834,7 +902,7 @@
     <img src="donboscof-logo.png" alt="Don Bosco F" class="gallery-image" />
   </section>
 
-  <!-- 📍 11 INTERACTIVE POPUP BUTTONS (Comité organizador deleted) -->
+  <!-- 📍 11 INTERACTIVE POPUP BUTTONS -->
   <nav class="nav-section">
     <div class="buttons-grid">
 
@@ -942,8 +1010,20 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT: POPUP CUSTOM LAYOUTS -->
+  <!-- JAVASCRIPT -->
   <script>
+    // 📍 DETECCIÓN DE SCROLL PARA LA BANDA ROJA
+    const badgeRow = document.getElementById('badgeRow');
+
+    window.addEventListener('scroll', () => {
+      // Al hacer scroll más de 60px hacia abajo, se convierte en banda fija roja
+      if (window.scrollY > 60) {
+        badgeRow.classList.add('scrolled');
+      } else {
+        badgeRow.classList.remove('scrolled');
+      }
+    });
+
     const popupContent = {
       // 1. MISIÓN INFORMATIVA
       "mision-informativa": {
@@ -1268,15 +1348,13 @@
         `
       },
 
-      // 📍 11. CONTACTOS Y COMITÉ ORGANIZADOR (RED RECTANGLE DELETED, 2 CUSTOM BLOCKS)
+      // 11. CONTACTOS
       "contactos": {
-        hideBadge: true, // Deletes the red rectangle
+        hideBadge: true,
         title: "",
         subtitle: "CONTACTOS Y COMITÉ ORGANIZADOR",
         render: () => `
           <div class="contacts-grid">
-
-            <!-- 📍 BLOCK 1: GESTIÓN DE PATROCINIOS (#bed7de) -->
             <div class="contact-card" style="background-color: #bed7de; color: #2e3749;">
               <h3 class="contact-card-title" style="color: #2e3749;">GESTIÓN DE PATROCINIOS</h3>
               
@@ -1293,7 +1371,6 @@
               </div>
             </div>
 
-            <!-- 📍 BLOCK 2: COMITÉ ORGANIZADOR JNS 2027 (#2e3749) -->
             <div class="contact-card dark" style="background-color: #2e3749; color: #ffffff;">
               <h3 class="contact-card-title" style="color: #f1a475;">COMITÉ ORGANIZADOR JNS 2027</h3>
               
@@ -1312,7 +1389,6 @@
                 <span class="person-desc" style="color: #cbd5e1;">Coordinadora Pastoral Juvenil FMA</span>
               </div>
             </div>
-
           </div>
         `
       }
@@ -1330,7 +1406,6 @@
     function openModal(topicKey) {
       const data = popupContent[topicKey];
       if (data) {
-        // 📍 Check if the red rectangle should be deleted/hidden
         if (data.hideBadge) {
           modalRedRect.style.display = 'none';
         } else {
@@ -1338,7 +1413,6 @@
           modalTitle.textContent = data.title;
         }
 
-        // Subtitle check
         if (data.subtitle && data.subtitle.trim() !== '') {
           modalSubtitle.textContent = data.subtitle;
           modalSubtitle.style.display = 'block';
