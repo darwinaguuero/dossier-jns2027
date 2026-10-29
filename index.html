@@ -209,8 +209,7 @@
       gap: 16px;
     }
 
-    /* 📍 GEMINI GRADIENT BORDER WITH YOUR PALETTE */
-    .nav-card {
+   .nav-card {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -225,51 +224,21 @@
       text-transform: uppercase;
       text-align: left;
       cursor: pointer;
-      position: relative;
       
-      /* White interior + 2px multi-color gradient border */
+      /* Static gradient border */
       border: 2px solid transparent;
       background: 
         linear-gradient(#ffffff, #ffffff) padding-box,
-        linear-gradient(120deg, #d90429, #f3ae7a, #bed7de, #0f1c3f, #d90429) border-box;
-      background-size: 300% 300%;
-      animation: geminiFlow 6s ease infinite;
+        linear-gradient(135deg, #d90429 0%, #f3ae7a 35%, #bed7de 70%, #0f1c3f 100%) border-box;
 
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    /* Continuous flowing color animation */
-    @keyframes geminiFlow {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    /* 📍 GEMINI AMBIENT GLOW ON HOVER */
     .nav-card:hover {
       transform: translateY(-3px);
       box-shadow: 
-        0 10px 24px -4px rgba(217, 4, 41, 0.25),
-        0 4px 16px -2px rgba(243, 174, 122, 0.35);
-    }
-
-    .nav-card .arrow {
-      font-size: 1rem;
-      margin-left: 10px;
-      transition: transform 0.25s ease, color 0.25s ease;
-      flex-shrink: 0;
-      color: #0f1c3f;
-    }
-
-    .nav-card:hover .arrow {
-      transform: translateX(4px);
-      color: #d90429;
+        0 12px 25px -4px rgba(217, 4, 41, 0.25),
+        0 6px 18px -2px rgba(243, 174, 122, 0.35);
     }
 
     /* FOOTER */
